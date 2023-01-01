@@ -11,29 +11,29 @@ int main()
 	f3=fopen("intermediate.txt","w");
 	f4=fopen("symtab.txt","w");
 	while (fscanf(f1,"%s%s%s",lab,optab,opa)!=EOF)
-    {
+    	{
 		if (strcmp(lab,"**")==0)
-        {
+       		{
 			if(strcmp(optab,"START")==0)
 			{
 				fprintf(f3,"%s%s%s",lab,optab,opa);
 				locctr=(atoi(opa));
 			}
 			else
-            {
+            		{
 				rewind(f2);
-			    x=0;
+			    	x=0;
 				while (fscanf(f2,"%s%s",optab1,opa1)!=EOF)
 				{
 					if (strcmp(optab,optab1)==0)
-                    {
+                    			{
 						x=1;
 					}
 				}
 			}
 		}
 		else
-        {
+        	{
 			if(x==1)
 			{
 				fprintf(f3,"\n %d %s %s %s",locctr,lab,optab,opa);
@@ -44,21 +44,21 @@ int main()
 				fprintf(f3,"\n %d %s %s %s",locctr,lab,optab,opa);
 				fprintf(f4,"\n %d %s",locctr,lab);
 				locctr=locctr+(3*(atoi(opa)));
-            }
-            else if(strcmp(optab,"WORD")==0)
+            		}
+            		else if(strcmp(optab,"WORD")==0)
 			{
 				fprintf(f3,"\n %d %s %s %s",locctr,lab,optab,opa);
 				fprintf(f4,"\n %d %s",locctr,lab);
 				locctr=locctr+3;
 			}
 			else if(strcmp(optab,"BYTE")==0)
-            {
+            		{
 				fprintf(f3,"\n %d %s %s %s",locctr,lab,optab,opa);
 				fprintf(f4,"\n %d %s",locctr,lab);
 				locctr=locctr+1;
 			}
 			else if(strcmp(optab,"RESB")==0)
-            {
+            		{
 				fprintf(f3,"\n %d %s %s %s",locctr,lab,optab,opa);
 				fprintf(f4,"\n %d %s",locctr,lab);
 				locctr=locctr+1;
